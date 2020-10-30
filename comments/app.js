@@ -1,31 +1,32 @@
-// request -> middleware -> next() middleware -> res.send() response
-
-// const http = require('http');
-
 const express = require('express');
-
+const app = express();
+const { randomBytes } = require('crypto');
 const bodyParser = require('body-parser');
 
-const app = express();
+const commentsByPostId = {};
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
-app.use('/add-product', (req, res, next) => {
-   console.log(('This is my homepage'));
-   res.send('<form action="/product" method="POST"> <input type="text" name="title"/><button type="submit">Submit</button></form>');
+app.get('/posts/:id/comments', (req, res, next) => {
+  res.send(commentsByPostId[req.params.id] || []);
+});
 
-})
+app.post('/posts/:id/comments', (req, res, next) => {
+  const commentId = randomBytes(4).toString('hex');
+  const { content } = req.body;
 
-app.use('/product', (req, res, next) => {
-   console.log(req.body);
-   res.redirect('/');
-})
+  const comments = commentsByPostId[req.params.id] || [];
 
-app.use('/', (req, res, next) => {
-   res.send('<h1>Hello from express</h1>');
-})
+  comments.push({
+    commentId,
+    content,
+  });
 
-app.listen(3020);
+  commentsByPostId[req.params.id] = comments;
 
-// const server = http.createServer(app);
-// server.listen(3020);
+  res.status(201).send(comments);
+});
+
+app.listen(4001, () => {
+  console.log('Listening on 4001');
+});
