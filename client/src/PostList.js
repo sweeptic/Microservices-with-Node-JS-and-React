@@ -1,19 +1,19 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
 
 const PostList = () => {
   const [posts, setPosts] = useState({});
 
-  const fetchPosts = async () => {
+  const fetchPosts = useCallback(async () => {
     const res = await axios.get('http://localhost:4000/posts');
     setPosts(res.data);
-  };
+  }, []);
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   console.log(posts);
 
