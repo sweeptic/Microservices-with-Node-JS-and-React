@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 app.get('/posts/:id/comments', (req, res, next) => {
   res.send(commentsByPostId[req.params.id] || []);
+  console.log(commentsByPostId);
 });
 
 app.post('/posts/:id/comments', (req, res, next) => {
