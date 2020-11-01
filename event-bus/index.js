@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-// const { randomBytes } = require('crypto');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
 const axios = require('axios');
 
 app.use(bodyParser.json());
@@ -18,5 +16,5 @@ app.post('/events', (req, res, next) => {
 });
 
 app.listen(4005, () => {
-  console.log('Listening on 4005');
+  console.log('Event bus listening on 4005');
 });
