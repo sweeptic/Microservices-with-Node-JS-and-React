@@ -6,7 +6,7 @@ const posts = {};
 
 const axios = require('axios');
 
-const handleEvent = (type, event) => {
+const handleEvent = (type, data) => {
   if (type === 'PostCreated') {
     const { id, title } = data;
 
@@ -63,6 +63,7 @@ app.post('/events', (req, res, next) => {
 app.listen(4002, async () => {
   console.log('Query service listening on 4002');
 
+  //app listen !
   const res = await axios.get('http://localhost:4005/events');
 
   for (let event of res.data) {
