@@ -47,5 +47,5 @@ app.post('/events', (req, res, next) => {
 });
 
 app.listen(4002, () => {
-  console.log('Query service stening on 4002');
+  console.log('Query service listening on 4002');
 });
