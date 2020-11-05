@@ -42,7 +42,7 @@ app.post('/events', (req, res, next) => {
 });
 
 app.listen(4000, () => {
-  console.log('v20');
+  console.log('v60');
 
   console.log('Posts service listening on 4000');
 });
