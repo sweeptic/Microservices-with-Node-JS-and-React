@@ -1,0 +1,85 @@
+ docker build -t olive4/posts .
+ docker push olive4/posts
+ 
+ 
+ kubectl apply -f posts-depl.yaml
+ kubectl apply -f posts-srv.yaml
+ kubectl apply -f .
+ 
+ 
+ kubectl rollout restart deployment deployments
+ 
+ kubectl get deployments
+ kubectl get pods
+ kubectl get services
+ 
+ 
+  kubectl delete deployments --all
+  
+  kubectl logs <pod NAME>
+  
+  minikube ip
+  http://192.168.99.101:32701/posts
+  
+  6a176bdeda1a6c4e6e4df3fd3a5ed9fb1c95fb7451fbdcadf055d8bc2bca9ec0
+  
+ 
+  minikube start
+  
+  cd  c:/users/lilian/documents/projects/_ticketing
+  
+  skaffold dev
+  
+  
+  minikube addons enable ingress
+  kubectl expose deployment ingress-nginx-controller --target-port=80 --type=NodePort -n kube-system
+  kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+  
+  
+  npm update @sgtickets-sweeptic/common
+  
+  
+  kubectl port-forward nats-depl-75d44f97bb-642j5 4222:4222
+  
+  thisisunsafe
+  
+  
+  cd C:\Users\Lilian\Documents\projects\_ticketing\auth
+  npm install --save-dev mongodb-memory-server@6.5.0
+  
+  
+  npm init -y
+  tsc --init
+  
+  
+  
+  
+//////////////
+
+//how start nextjs project
+npm init -y
+npm install react react-dom next
+- package json 
+ "scripts": {
+    "dev": "next"
+  },
+  
+  
+  
+  //	kubernetes change context
+  doctl kubernetes cluster kubeconfig save ticketing
+  
+  kubectl config view
+  
+  kubectl config use-context <context_name> 
+  
+  
+
+  npm test /AlgoCasts-master/exercises/xxxxxxxxxxxxxx/test.js
+  
+
+   almacsutka19780404
+  
+  
+  
+  
